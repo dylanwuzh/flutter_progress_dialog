@@ -45,7 +45,9 @@ ProgressFuture showProgressDialog({
       Container(
         margin: const EdgeInsets.all(50.0),
         padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-        decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(radius)),
+        decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(radius)),
         child: ClipRect(
           child: orientation == ProgressOrientation.vertical
               ? Column(
@@ -58,7 +60,8 @@ ProgressFuture showProgressDialog({
                       padding: EdgeInsets.all(4.0),
                       child: CircularProgressIndicator(strokeWidth: 3.0),
                     ),
-                    Text(loadingText, style: textStyle, textAlign: TextAlign.center),
+                    Text(loadingText,
+                        style: textStyle, textAlign: TextAlign.center),
                   ],
                 )
               : Row(
@@ -72,7 +75,8 @@ ProgressFuture showProgressDialog({
                       padding: EdgeInsets.all(4.0),
                       child: CircularProgressIndicator(strokeWidth: 3.0),
                     ),
-                    Text(loadingText, style: textStyle, textAlign: TextAlign.center),
+                    Text(loadingText,
+                        style: textStyle, textAlign: TextAlign.center),
                   ],
                 ),
         ),
@@ -98,7 +102,9 @@ ProgressFuture showProgressDialogWidget(
   OverlayEntry entry;
   ProgressFuture future;
 
-  var direction = textDirection ?? _ProgressTheme.of(context).textDirection ?? TextDirection.ltr;
+  var direction = textDirection ??
+      _ProgressTheme.of(context).textDirection ??
+      TextDirection.ltr;
 
   GlobalKey<_ProgressContainerState> key = GlobalKey();
 

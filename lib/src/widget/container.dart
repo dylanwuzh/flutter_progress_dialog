@@ -12,7 +12,8 @@ class _ProgressContainer extends StatefulWidget {
   _ProgressContainerState createState() => _ProgressContainerState();
 }
 
-class _ProgressContainerState extends State<_ProgressContainer> with WidgetsBindingObserver {
+class _ProgressContainerState extends State<_ProgressContainer>
+    with WidgetsBindingObserver {
   double opacity = 0.0;
 
   @override
