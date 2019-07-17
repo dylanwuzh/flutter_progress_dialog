@@ -16,10 +16,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ProgressDialog(
-      loading: Container(
-        decoration: BoxDecoration(color: Color(0xa0000000), borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        child: SpinKitRipple(size: 120, color: Colors.white),
-      ),
+//      loading: Container(
+//        decoration: BoxDecoration(color: Color(0xa0000000), borderRadius: BorderRadius.all(Radius.circular(10.0))),
+//        child: SpinKitRipple(size: 120, color: Colors.white),
+//      ),
       orientation: ProgressOrientation.vertical,
       loadingText: "Loading...",
       child: MaterialApp(
