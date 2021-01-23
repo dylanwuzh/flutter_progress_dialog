@@ -36,7 +36,7 @@ class _ProgressTheme extends InheritedWidget {
         this.loadingText = "请稍候";
 
   static _ProgressTheme of(BuildContext context) =>
-      context.inheritFromWidgetOfExactType(_ProgressTheme);
+      context.dependOnInheritedWidgetOfExactType<_ProgressTheme>();
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
