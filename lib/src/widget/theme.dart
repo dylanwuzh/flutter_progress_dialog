@@ -33,10 +33,11 @@ class _ProgressTheme extends InheritedWidget {
         this.orientation = ProgressOrientation.horizontal,
         this.textDirection = TextDirection.ltr,
         this.loading = null,
-        this.loadingText = "请稍候";
+        this.loadingText = "Please Wait";
 
   static _ProgressTheme of(BuildContext context) =>
-      context.inheritFromWidgetOfExactType(_ProgressTheme);
+      context.dependOnInheritedWidgetOfExactType(aspect: _ProgressTheme);
+      //context.inheritFromWidgetOfExactType(_ProgressTheme);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
