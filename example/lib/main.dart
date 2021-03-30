@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import 'package:flutter_progress_dialog/flutter_progress_dialog.dart';
 
 void main() => runApp(MyApp());
@@ -27,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         home: Scaffold(
           appBar: AppBar(title: const Text('ProgressDialog Demo')),
           body: Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () {
                 showProgressDialog();
                 Future.delayed(Duration(seconds: 4), () {
