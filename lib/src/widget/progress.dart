@@ -65,7 +65,7 @@ class _ProgressDialogState extends State<ProgressDialog> {
       textDirection: direction,
     );
 
-    var typography = Typography(platform: TargetPlatform.android);
+    var typography = Typography(platform: defaultTargetPlatform);
     final TextTheme defaultTextTheme = typography.white;
 
     TextStyle textStyle = widget.textStyle ??

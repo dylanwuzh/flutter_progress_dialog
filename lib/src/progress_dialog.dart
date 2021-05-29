@@ -1,7 +1,12 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:io';
 import 'dart:ui' as ui;
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter/material.dart';
 
 import 'core/manager.dart';
@@ -41,46 +46,90 @@ ProgressFuture showProgressDialog({
   loading ??= theme.loading;
   loadingText ??= theme.loadingText ?? _defaultLoadingText;
 
-  Widget widget = loading ??
-      Container(
-        margin: const EdgeInsets.all(50.0),
-        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-        decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(radius)),
-        child: ClipRect(
-          child: orientation == ProgressOrientation.vertical
-              ? Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Container(
-                      width: 40.0,
-                      height: 40.0,
-                      margin: EdgeInsets.only(bottom: 8.0),
-                      padding: EdgeInsets.all(4.0),
-                      child: CircularProgressIndicator(strokeWidth: 3.0),
-                    ),
-                    Text(loadingText,
-                        style: textStyle, textAlign: TextAlign.center),
-                  ],
-                )
-              : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 36.0,
-                      height: 36.0,
-                      margin: EdgeInsets.only(right: 8.0),
-                      padding: EdgeInsets.all(4.0),
-                      child: CircularProgressIndicator(strokeWidth: 3.0),
-                    ),
-                    Text(loadingText,
-                        style: textStyle, textAlign: TextAlign.center),
-                  ],
-                ),
+  Widget widget = PlatformWidget(
+    material: (context, platform) =>
+        loading ??
+        Container(
+          margin: const EdgeInsets.all(50.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+          decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(radius)),
+          child: ClipRect(
+            child: orientation == ProgressOrientation.vertical
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Container(
+                        width: 40.0,
+                        height: 40.0,
+                        margin: EdgeInsets.only(bottom: 8.0),
+                        padding: EdgeInsets.all(4.0),
+                        child: CircularProgressIndicator(strokeWidth: 3.0),
+                      ),
+                      Text(loadingText,
+                          style: textStyle, textAlign: TextAlign.center),
+                    ],
+                  )
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: 36.0,
+                        height: 36.0,
+                        margin: EdgeInsets.only(right: 8.0),
+                        padding: EdgeInsets.all(4.0),
+                        child: CircularProgressIndicator(strokeWidth: 3.0),
+                      ),
+                      Text(loadingText,
+                          style: textStyle, textAlign: TextAlign.center),
+                    ],
+                  ),
+          ),
         ),
-      );
+    cupertino: (context, platform) =>
+        loading ??
+        CupertinoPopupSurface(
+          isSurfacePainted: true,
+          child: Container(
+            margin: const EdgeInsets.all(50.0),
+            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+            child: ClipRect(
+              child: orientation == ProgressOrientation.vertical
+                  ? Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Container(
+                          width: 40.0,
+                          height: 40.0,
+                          margin: EdgeInsets.only(bottom: 8.0),
+                          padding: EdgeInsets.all(4.0),
+                          child: CupertinoActivityIndicator(),
+                        ),
+                        Text(loadingText,
+                            style: textStyle, textAlign: TextAlign.center),
+                      ],
+                    )
+                  : Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 36.0,
+                          height: 36.0,
+                          margin: EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.all(4.0),
+                          child: CircularProgressIndicator(strokeWidth: 3.0),
+                        ),
+                        Text(loadingText,
+                            style: textStyle, textAlign: TextAlign.center),
+                      ],
+                    ),
+            ),
+          ),
+        ),
+  );
 
   return showProgressDialogWidget(
     widget,
