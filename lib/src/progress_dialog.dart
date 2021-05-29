@@ -93,17 +93,15 @@ ProgressFuture showProgressDialog({
         CupertinoPopupSurface(
           isSurfacePainted: true,
           child: Container(
-            margin: const EdgeInsets.all(50.0),
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+            margin: const EdgeInsets.all(24.0),
             child: ClipRect(
-              child: orientation == ProgressOrientation.vertical
+              child: orientation == ProgressOrientation.horizontal
                   ? Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Container(
                           width: 40.0,
                           height: 40.0,
-                          margin: EdgeInsets.only(bottom: 8.0),
                           padding: EdgeInsets.all(4.0),
                           child: CupertinoActivityIndicator(),
                         ),
@@ -118,9 +116,8 @@ ProgressFuture showProgressDialog({
                         Container(
                           width: 36.0,
                           height: 36.0,
-                          margin: EdgeInsets.only(right: 8.0),
                           padding: EdgeInsets.all(4.0),
-                          child: CircularProgressIndicator(strokeWidth: 3.0),
+                          child: CupertinoActivityIndicator(),
                         ),
                         Text(loadingText,
                             style: textStyle, textAlign: TextAlign.center),
