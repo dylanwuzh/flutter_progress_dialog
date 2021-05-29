@@ -38,7 +38,12 @@ ProgressFuture showProgressDialog({
   context ??= _contextMap.values.first;
   _ProgressTheme theme = _ProgressTheme.of(context);
   theme ??= _ProgressTheme.origin();
-  textStyle ??= theme.textStyle ?? TextStyle(fontSize: 16.0);
+  textStyle ??= theme.textStyle ??
+      TextStyle(
+          fontSize: 16.0,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.black12
+              : Colors.white10);
   backgroundColor ??= theme.backgroundColor;
   radius ??= theme.radius;
   textDirection ??= theme.textDirection ?? TextDirection.ltr;
@@ -95,7 +100,7 @@ ProgressFuture showProgressDialog({
           child: Container(
             margin: const EdgeInsets.all(24.0),
             child: ClipRect(
-              child: orientation == ProgressOrientation.horizontal
+              child: orientation == ProgressOrientation.vertical
                   ? Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
