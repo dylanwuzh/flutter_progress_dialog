@@ -41,9 +41,9 @@ ProgressFuture showProgressDialog({
   textStyle ??= theme.textStyle ??
       TextStyle(
           fontSize: 16.0,
-          color: Theme.of(context).brightness == Brightness.light
-              ? Colors.black12
-              : Colors.white10);
+          color: MediaQuery.of(context).platformBrightness == Brightness.light
+              ? Colors.black87
+              : Colors.white);
   backgroundColor ??= theme.backgroundColor;
   radius ??= theme.radius;
   textDirection ??= theme.textDirection ?? TextDirection.ltr;
@@ -98,7 +98,7 @@ ProgressFuture showProgressDialog({
         CupertinoPopupSurface(
           isSurfacePainted: true,
           child: Container(
-            margin: const EdgeInsets.all(24.0),
+            margin: const EdgeInsets.all(20.0),
             child: ClipRect(
               child: orientation == ProgressOrientation.vertical
                   ? Column(
