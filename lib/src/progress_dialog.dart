@@ -38,12 +38,11 @@ ProgressFuture showProgressDialog({
   context ??= _contextMap.values.first;
   _ProgressTheme theme = _ProgressTheme.of(context);
   theme ??= _ProgressTheme.origin();
-  textStyle ??= theme.textStyle ??
-      TextStyle(
-          fontSize: 16.0,
-          color: MediaQuery.of(context).platformBrightness == Brightness.light
-              ? Colors.black87
-              : Colors.white);
+  textStyle ??= TextStyle(
+      fontSize: 16.0,
+      color: Theme.of(context).brightness == Brightness.light
+          ? Colors.black87
+          : Colors.white);
   backgroundColor ??= theme.backgroundColor;
   radius ??= theme.radius;
   textDirection ??= theme.textDirection ?? TextDirection.ltr;

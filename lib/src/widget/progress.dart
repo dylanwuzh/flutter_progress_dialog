@@ -81,7 +81,6 @@ class _ProgressDialogState extends State<ProgressDialog> {
       radius: widget.radius,
       loading: widget.loading,
       loadingText: widget.loadingText,
-      textStyle: textStyle,
       textDirection: direction,
       orientation: widget.orientation,
     );
